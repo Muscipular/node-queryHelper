@@ -34,7 +34,7 @@ var queryFormat = function (query, values) {
 };
 
 
-exports.init = function (conf) {
+var init = function (conf) {
     if (util.isString(conf)) {
         conf = require(conf);
     }
@@ -46,7 +46,7 @@ exports.init = function (conf) {
     }
 };
 
-exports.endPool = function () {
+var endPool = function () {
     if (!config || !config.pooling) {
         return;
     }
@@ -56,7 +56,7 @@ exports.endPool = function () {
     pool.end();
 };
 
-exports.getConnection = function (fromPool, conf, callback) {
+var getConnection = function (fromPool, conf, callback) {
     if (!config) {
         throw new Error('module does not init');
     }
@@ -73,6 +73,9 @@ exports.getConnection = function (fromPool, conf, callback) {
     return pool.getConnection(cb);
 };
 
+exports.init = init;
+exports.endPool = endPool;
+exports.getConnection = getConnection;
 exports.escape = escape;
 exports.escapeId = mysql.escapeId;
 exports.queryFormat = queryFormat;
