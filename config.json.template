@@ -1,0 +1,13 @@
+{
+    "host": "127.0.0.1",
+    "port": "3306",
+    "socketPath": "",
+    "user": "user",
+    "password": "password",
+    "database": "database",
+    "supportBigNumbers": true,
+    "connectionLimit": 20,
+    "timezone": "+08:00",
+    "stringifyObjects": false,
+    "pooling": true
+}

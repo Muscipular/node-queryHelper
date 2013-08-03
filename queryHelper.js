@@ -1,4 +1,4 @@
-var util = require('../utilEx');
+var util = require('node-utilEx');
 var mysqlHelper = require('./mysqlHelper');
 //var q = require('q');
 

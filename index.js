@@ -1,5 +1,5 @@
 var mysqlHelper = require('./mysqlHelper');
 var queryHelper = require('./queryHelper');
+var util = require('node-utilEx');
 
-exports.mysqlHelper = mysqlHelper;
-exports.queryHelper = queryHelper;
+module.exports = util.extend({}, mysqlHelper, queryHelper);
