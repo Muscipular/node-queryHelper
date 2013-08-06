@@ -7,7 +7,7 @@ var SQLBuilderBase = function (model) {
         this._model = model;
         this.tableName(model.tableName || "");
     }
-    this._field = ['*'];
+    this._field = '*';
     this._where = '';
 };
 
