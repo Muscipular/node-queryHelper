@@ -57,11 +57,12 @@ SQLBuilderBase.prototype = {
                 return callback(e);
             }
             return connection.query(sql, data, function (e, results, fields) {
-                connection.end();
                 if (e) {
                     console.log(sql);
+                    connection.destroy();
                     return callback(e);
                 }
+                connection.end();
                 return callback(e, results, fields);
             })
         });
