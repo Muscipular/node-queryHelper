@@ -62,7 +62,7 @@ SQLBuilderBase.prototype = {
                     connection.destroy();
                     return callback(e);
                 }
-                connection.end();
+                connection.release();
                 return callback(e, results, fields);
             })
         });
