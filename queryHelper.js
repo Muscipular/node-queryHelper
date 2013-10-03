@@ -20,6 +20,7 @@ SQLBuilderBase.prototype = {
     },
     field: function (field, isRaw) {
         this._field = field;
+        this._fieldIsRaw = isRaw;
         return this;
     },
     _buildField: function () {
@@ -31,12 +32,16 @@ SQLBuilderBase.prototype = {
             return field;
         }
         var r = [], i = 0, len = field.length;
-        for (; i < len; i++) {
-            var f = field[i].trim().split(' ');
-            util.forEach(f, function (v, i) {
-                f[i] = v ? mysqlHelper.escapeId(v) : '';
-            });
-            r.push(util.joinEx(f, ' '));
+        if (this._fieldIsRaw) {
+            r = field;
+        } else {
+            for (; i < len; i++) {
+                var f = field[i].trim().split(' ');
+                util.forEach(f, function (v, i) {
+                    f[i] = v ? mysqlHelper.escapeId(v) : '';
+                });
+                r.push(util.joinEx(f, ' '));
+            }
         }
         return util.joinEx(r, ',');
     },
